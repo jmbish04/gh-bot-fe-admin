@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { OperationsMonitoring } from '@/components/operations/OperationsMonitoring';
+import { MainLayout } from '@/components/layout/MainLayout';
+---
+
+<Layout title="Operations Monitoring - GitHub Bot Admin">
+  <MainLayout client:only="react" currentPage="operations">
+    <OperationsMonitoring client:load />
+  </MainLayout>
+</Layout>

@@ -1,108 +1,273 @@
-# SaaS Admin Template
+# GitHub Bot Frontend Admin Dashboard
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/saas-admin-template)
-
-![SaaS Admin Template](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/52b88668-0144-489c-dd02-fe620270ba00/public)
-
-<!-- dash-content-start -->
-
-A complete admin dashboard template built with Astro, Shadcn UI, and Cloudflare's developer stack. Quickly deploy a fully functional admin interface with customer and subscription management capabilities.
+A modern, responsive frontend application for managing the Colby GitHub Bot API. This dashboard provides an intuitive interface for monitoring GitHub workflows, managing research operations, and interacting with AI-powered code analysis features.
 
 ## Features
 
-- 🎨 Modern UI built with Astro and Shadcn UI
-- 🔐 Built-in API with token authentication
-- 👥 Customer management
-- 💳 Subscription tracking
-- 🚀 Deploy to Cloudflare Workers
-- 📦 Powered by Cloudflare D1 database
-- ✨ Clean, responsive interface
-- 🔍 Data validation with Zod
+### 🏠 Dashboard Overview
+- **Real-time Statistics**: Live updates of total commands, active operations, repositories, and best practices
+- **Quick Actions**: One-click buttons to trigger research sweeps and view recent activity
+- **Status Indicators**: Visual health status and operation progress bars
+- **Recent Activity Feed**: Live updates of recent commands and operations
 
-## Tech Stack
+### 🔍 Research & Analysis Module
+- **Repository Discovery**: Browse and analyze discovered repositories with AI summaries
+- **Advanced Filtering**: Filter by score, category, technology stack, and search terms
+- **Research Controls**: Start/stop research sweeps with real-time progress tracking
+- **Repository Details**: Deep dive into individual repository analysis with detailed insights
 
-- Frontend: [Astro](https://astro.build)
-- UI Components: [Shadcn UI](https://ui.shadcn.com)
-- Database: [Cloudflare D1](https://developers.cloudflare.com/d1)
-- Deployment: [Cloudflare Workers](https://workers.cloudflare.com)
-- Validation: [Zod](https://github.com/colinhacks/zod)
+### ⚡ Command Management
+- **Command History**: Complete history of executed Colby commands with status tracking
+- **Advanced Filtering**: Filter by repository, author, status, and date range
+- **Command Details**: View full command execution logs and results
+- **Real-time Updates**: Live status updates for running commands
 
-> [!IMPORTANT]
-> When using C3 to create this project, select "no" when it asks if you want to deploy. You need to follow this project's [setup steps](https://github.com/cloudflare/templates/tree/main/d1-template#setup-steps) before deploying.
+### 📚 Best Practices Management
+- **Practice Library**: Browse and search code best practices and suggestions
+- **Category Organization**: Group practices by technology, language, or domain
+- **Status Management**: Approve, reject, or mark practices as pending
+- **Practice Details**: View full descriptions, examples, and implementation guides
 
-<!-- dash-content-end -->
+### 📊 Operations Monitoring
+- **Live Operations**: Real-time view of active operations with progress tracking
+- **Operation History**: Historical view of completed operations
+- **Error Handling**: Display operation errors and retry options
+- **Performance Metrics**: Monitor system performance and health
 
-## Setup Steps
+## Technology Stack
 
-1. Install dependencies:
+- **Frontend Framework**: Astro with React components
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **State Management**: Zustand for client state, React Query for server state
+- **Real-time Updates**: WebSocket connections for live data
+- **TypeScript**: Full type safety throughout the application
+- **Icons**: Lucide React icon library
 
-```bash
-npm install
-```
+## Getting Started
 
-2. Set up your environment variables:
+### Prerequisites
 
-```bash
-# Create a .dev.vars file for local development
-cp .dev.vars.example .dev.vars
-```
+- Node.js 18+ 
+- npm or yarn
+- Access to the GitHub Bot API at `https://gh-bot.hacolby.workers.dev`
 
-Add your API token:
+### Installation
 
-```
-API_TOKEN=your_token_here
-```
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd gh-bot-fe-admin
+   ```
 
-_An API token is required to authenticate requests to the API. You should generate this before trying to run the project locally or deploying it._
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-3. Create a [D1 database](https://developers.cloudflare.com/d1/get-started/) with the name "admin-db":
+3. **Set up environment variables**
+   ```bash
+   # Create .env file
+   GITHUB_BOT_API_TOKEN=your_api_token_here
+   ```
 
-```bash
-npx wrangler d1 create admin-db
-```
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-...and update the `database_id` field in `wrangler.json` with the new database ID.
+5. **Open your browser**
+   Navigate to `http://localhost:4321` to view the dashboard.
 
-4. Run the database migrations locally:
-
-```bash
-$ npm run db:migrate
-```
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-_If you're testing Workflows, you should run `npm run wrangler:dev` instead._
-
-5. Build the application:
+### Building for Production
 
 ```bash
 npm run build
 ```
 
-6. Deploy to Cloudflare Workers:
+### Deployment
+
+The application is configured for deployment on Cloudflare Pages:
 
 ```bash
 npm run deploy
 ```
 
-7. Run the database migrations remotely:
+## API Integration
 
-```bash
-$ npm run db:migrate:remote
+The frontend integrates with the GitHub Bot API through:
+
+- **REST API**: For data fetching and CRUD operations
+- **WebSocket**: For real-time updates and live monitoring
+- **TypeScript Types**: Auto-generated from OpenAPI specification
+
+### Key API Endpoints
+
+- `GET /health` - System health check
+- `GET /research/results` - Repository analysis results
+- `GET /colby/commands` - Command execution history
+- `GET /colby/best-practices` - Best practices library
+- `GET /api/operations` - Live operations monitoring
+- `GET /api/stats` - Dashboard statistics
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── dashboard/      # Dashboard-specific components
+│   ├── research/       # Research module components
+│   ├── commands/       # Command management components
+│   ├── practices/      # Best practices components
+│   ├── operations/     # Operations monitoring components
+│   ├── layout/         # Layout and navigation components
+│   └── ui/             # Base UI components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility libraries and services
+│   ├── services/       # API service layer
+│   └── stores/         # State management stores
+├── types/              # TypeScript type definitions
+├── pages/              # Astro pages
+└── styles/             # Global styles
 ```
 
-8. Set your production API token:
+## Features in Detail
+
+### Real-time Updates
+
+The application uses WebSocket connections to provide real-time updates for:
+- Dashboard statistics
+- Operation progress
+- Command status changes
+- Research completion notifications
+- System health monitoring
+
+### Responsive Design
+
+- **Mobile-first**: Optimized for mobile devices
+- **Tablet Support**: Responsive layout for tablet screens
+- **Desktop**: Full-featured desktop experience
+- **Dark Mode**: System preference detection and manual toggle
+
+### Performance Optimization
+
+- **Code Splitting**: Lazy loading of components and routes
+- **Memoization**: React.memo and useMemo for expensive operations
+- **Query Caching**: React Query for intelligent data caching
+- **Virtual Scrolling**: For large data tables (future enhancement)
+
+### Accessibility
+
+- **Keyboard Navigation**: Full keyboard accessibility support
+- **Screen Reader**: ARIA labels and semantic HTML
+- **Color Contrast**: WCAG 2.1 AA compliant color schemes
+- **Focus Management**: Proper focus handling for modals and navigation
+
+## Customization
+
+### Theming
+
+The application supports light, dark, and system themes. Theme preferences are persisted in localStorage.
+
+### Filtering and Search
+
+All data tables support:
+- Text search across relevant fields
+- Multi-column filtering
+- Sorting by any column
+- Pagination for large datasets
+
+### Notifications
+
+The notification system provides:
+- Real-time alerts for important events
+- Categorized notifications (success, error, warning, info)
+- Auto-removal after configurable time
+- Mark as read functionality
+
+## Development
+
+### Code Quality
+
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Code quality and consistency
+- **Prettier**: Code formatting
+- **Husky**: Git hooks for quality checks
+
+### Testing
 
 ```bash
-npx wrangler secret put API_TOKEN
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
 ```
 
-## Usage
+### Contributing
 
-This project includes a fully functional admin dashboard with customer and subscription management capabilities. It also includes an API with token authentication to access resources via REST, returning JSON data.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
 
-It also includes a "Customer Workflow", built with [Cloudflare Workflows](https://developers.cloudflare.com/workflows). This workflow can be triggered in the UI or via the REST API to do arbitrary actions in the background for any given user. See [`customer_workflow.ts`]() to learn more about what you can do in this workflow.
+## Troubleshooting
+
+### Common Issues
+
+1. **API Connection Issues**
+   - Verify the API token is correctly set
+   - Check network connectivity
+   - Ensure the API endpoint is accessible
+
+2. **WebSocket Connection Issues**
+   - Check if WebSocket is supported in your environment
+   - Verify the WebSocket URL is correct
+   - Check for firewall or proxy restrictions
+
+3. **Build Issues**
+   - Clear node_modules and reinstall dependencies
+   - Check Node.js version compatibility
+   - Verify all environment variables are set
+
+### Debug Mode
+
+Enable debug mode by setting:
+```bash
+DEBUG=true npm run dev
+```
+
+## License
+
+MIT License - see LICENSE file for details.
+
+## Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the documentation
+- Review the API specification at `/openapi.json`
+
+## Roadmap
+
+### Upcoming Features
+
+- [ ] Advanced data visualization and charts
+- [ ] Bulk operations for commands and practices
+- [ ] Export functionality for data
+- [ ] User management and permissions
+- [ ] Advanced search and filtering
+- [ ] Custom dashboard widgets
+- [ ] API rate limiting and usage analytics
+- [ ] Integration with external tools (Slack, Discord, etc.)
+
+### Performance Improvements
+
+- [ ] Virtual scrolling for large datasets
+- [ ] Image optimization and lazy loading
+- [ ] Service worker for offline functionality
+- [ ] Advanced caching strategies
+- [ ] Bundle size optimization

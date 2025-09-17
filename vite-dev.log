@@ -1,0 +1,124 @@
+
+ ⛅️ wrangler 4.37.0
+───────────────────
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                       Resource                  Mode
+env.CUSTOMER_WORKFLOW (CustomerWorkflow)      Workflow                  local
+env.DB (admin-db)                             D1 Database               local
+env.EXAMPLE_VALUE ("example_value")           Environment Variable      local
+env.API_TOKEN ("(hidden)")                    Environment Variable      local
+
+⎔ Starting local server...
+[wrangler:info] Ready on http://localhost:4321
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mError: No QueryClient set, use QueryClientProvider to set one[0m
+
+      at useQueryClient (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/pages/admin.astro.mjs:3991:11)
+      at useBaseQuery (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/pages/admin.astro.mjs:4078:18)
+      at useQuery (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/pages/admin.astro.mjs:4143:10)
+      at useDashboardData (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/pages/admin.astro.mjs:8128:10)
+      at Dashboard (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/pages/admin.astro.mjs:38875:53)
+      at renderWithHooks (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/chunks/_@astro-renderers_DDbrAk_n.mjs:5005:19)
+      at renderElement (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/chunks/_@astro-renderers_DDbrAk_n.mjs:5143:15)
+      at retryNode (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/chunks/_@astro-renderers_DDbrAk_n.mjs:5687:17)
+      at performWork (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/chunks/_@astro-renderers_DDbrAk_n.mjs:6317:14)
+      at null.<anonymous> (file:///Volumes/Projects/workers/gh-bot-fe-admin/dist/_worker.js/chunks/_@astro-renderers_DDbrAk_n.mjs:6800:17)
+
+
+[wrangler:info] GET /admin 200 OK (89ms)
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught Error: No QueryClient set, use QueryClientProvider to set one [0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught Error: No QueryClient set, use QueryClientProvider to set one [0m
+
+
+⎔ Reloading local server...
+⎔ Reloading local server...
+⎔ Reloading local server...
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                       Resource                  Mode
+env.CUSTOMER_WORKFLOW (CustomerWorkflow)      Workflow                  local
+env.EXAMPLE_VALUE ("example_value")           Environment Variable      local
+env.API_TOKEN ("(hidden)")                    Environment Variable      local
+
+⎔ Reloading local server...
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mBuild failed with 1 error:[0m
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "../src/workflows/customer_workflow.js"[0m
+  
+      dist/index.js:5:33:
+  [37m      5 │ ... { CustomerWorkflow } from [32m"../src/workflows/customer_workflow.js"[37m;
+          ╵                               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  
+  
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mBuild failed with 1 error:[0m
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "/Volumes/Projects/workers/gh-bot-fe-admin/dist/index.js"[0m
+  
+      .wrangler/tmp/bundle-AbhIAY/middleware-insertion-facade.js:1:43:
+  [37m      1 │ ...PORTS from [32m"/Volumes/Projects/workers/gh-bot-fe-admin/dist/index[37m...
+          ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  
+  
+
+
+⎔ Reloading local server...
+⎔ Reloading local server...
+⎔ Reloading local server...
+⎔ Reloading local server...
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mBuild failed with 1 error:[0m
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "../src/workflows/customer_workflow.js"[0m
+  
+      dist/index.js:5:33:
+  [37m      5 │ ... { CustomerWorkflow } from [32m"../src/workflows/customer_workflow.js"[37m;
+          ╵                               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  
+  
+
+
+⎔ Reloading local server...
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mError: No QueryClient set, use QueryClientProvider to set one[0m
+
+      at useQueryClient (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:47054:15)
+      at useBaseQuery (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:30064:18)
+      at useQuery (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:30128:10)
+      at useDashboardData (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:49138:14)
+      at Dashboard (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:62560:65)
+      at renderWithHooks (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:11672:20)
+      at renderElement (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:11748:16)
+      at retryNode (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:12192:18)
+      at performWork (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:12658:15)
+      at null.<anonymous> (file:///Volumes/Projects/workers/gh-bot-fe-admin/.wrangler/tmp/dev-SiZCpr/index.js:13012:14)
+
+
+[wrangler:info] GET /admin 200 OK (62ms)
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught Error: No QueryClient set, use QueryClientProvider to set one [0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mUncaught Error: No QueryClient set, use QueryClientProvider to set one [0m
+
+
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                       Resource                  Mode
+env.CUSTOMER_WORKFLOW (CustomerWorkflow)      Workflow                  local
+env.EXAMPLE_VALUE ("example_value")           Environment Variable      local
+env.API_TOKEN ("(hidden)")                    Environment Variable      local
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mBuild failed with 1 error:[0m
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "../src/workflows/customer_workflow.js"[0m
+  
+      dist/index.js:5:33:
+  [37m      5 │ ... { CustomerWorkflow } from [32m"../src/workflows/customer_workflow.js"[37m;
+          ╵                               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  
+  
+
+
+🪵  Logs were written to "/Users/126colby/Library/Preferences/.wrangler/logs/wrangler-2025-09-15_13-01-35_798.log"

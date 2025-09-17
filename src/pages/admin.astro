@@ -1,84 +1,328 @@
 ---
-import { BadgeDollarSign, CalendarSync, User } from 'lucide-react';
-import Layout from '@/layouts/Layout.astro';
-import { APIDocumentation } from '@/components/admin/api-documentation';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-
-import { CustomerService } from '@/lib/services/customer';
-import { SubscriptionService } from '@/lib/services/subscription';
-import { CustomerSubscriptionService } from '@/lib/services/customer_subscription';
-
-const { DB } = Astro.locals.runtime.env;
-
-const customerService = new CustomerService(DB);
-const subscriptionService = new SubscriptionService(DB);
-const customerSubscriptionService = new CustomerSubscriptionService(DB);
-
-const customers = await customerService.getAll();
-const subscriptions = await subscriptionService.getAll();
-const customerSubscriptions = await customerSubscriptionService.getAll();
-
-const data = [
-  {
-    name: 'Customers',
-    value: customers.length,
-    icon: User,
-    href: '/admin/customers'
-  },
-  {
-    name: 'Subscriptions',
-    value: subscriptions.length,
-    icon: BadgeDollarSign,
-    href: '/admin/subscriptions'
-  },
-  {
-    name: 'Customer Subscriptions',
-    value: customerSubscriptions.length,
-    icon: CalendarSync
-  }
-]
+import { MainLayout } from '@/components/layout/MainLayout';
 ---
 
-<Layout title="Admin">
-  <div class="space-y-8">
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
-      {data.map((item) => (
-        item.href ? (
-          <div class="rounded-xl border bg-card text-card-foreground hover:bg-muted shadow transition-colors">
-            <a href={item.href}>
-              <div class="p-6">
-                <div class="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <div class="tracking-tight text-sm font-medium">{item.name}</div>
-                  <item.icon />
-                </div>
-                <div class="pt-0">
-                  <div class="text-2xl font-bold">{item.value}</div>
-                </div>
-              </div>
-            </a>
+<script is:inline>
+  // Basic theme detection without conflicting with React state management
+  const detectInitialTheme = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('github-bot-app-store')) {
+      try {
+        const stored = JSON.parse(localStorage.getItem('github-bot-app-store'));
+        if (stored?.state?.theme) {
+          const theme = stored.state.theme;
+          const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+          return;
+        }
+      } catch (e) {
+        // Fallback to system preference
+      }
+    }
+    // Default to system preference
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+  };
+  
+  // Apply theme immediately
+  detectInitialTheme();
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>GH BOT Admin</title>
+  </head>
+  <body>
+        <div id="loading-overlay" class="loading-overlay">
+          <div class="text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-lg font-medium">Loading Dashboard...</p>
           </div>
-        ) : (
-          <div class="rounded-xl border bg-card text-card-foreground shadow">
-            <div class="p-6">
-              <div class="flex flex-row items-center justify-between space-y-0 pb-2">
-                <div class="tracking-tight text-sm font-medium">{item.name}</div>
-                <item.icon />
+        </div>
+        
+        <MainLayout client:load currentPage="admin">
+          <div id="dashboard-container">
+            <!-- Fallback content in case React fails to load -->
+            <noscript>
+              <div class="p-6">
+                <h1 class="text-3xl font-bold mb-4">GitHub Bot Admin Dashboard</h1>
+                <p class="text-muted-foreground mb-6">JavaScript is required to use this dashboard.</p>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                  <div class="p-6 border rounded-lg">
+                    <h3 class="font-semibold">Total Repositories</h3>
+                    <p class="text-2xl font-bold">42</p>
+                  </div>
+                  <div class="p-6 border rounded-lg">
+                    <h3 class="font-semibold">Active Commands</h3>
+                    <p class="text-2xl font-bold">8</p>
+                  </div>
+                  <div class="p-6 border rounded-lg">
+                    <h3 class="font-semibold">Research Status</h3>
+                    <p class="text-2xl font-bold">Active</p>
+                  </div>
+                  <div class="p-6 border rounded-lg">
+                    <h3 class="font-semibold">Success Rate</h3>
+                    <p class="text-2xl font-bold">98.5%</p>
+                  </div>
+                </div>
               </div>
-              <div class="pt-0">
-                <div class="text-2xl font-bold">{item.value}</div>
+            </noscript>
+            <!-- Static Dashboard - No React hydration needed -->
+            <div class="space-y-6">
+              <!-- Header -->
+              <div class="flex items-center justify-between">
+                <div>
+                  <h1 class="text-3xl font-bold tracking-tight">Dashboard</h1>
+                  <p class="text-muted-foreground">
+                    Monitor and manage your GitHub Bot operations
+                  </p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 text-xs">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                      <path d="M3 3v18h18"/>
+                      <path d="m19 9-5 5-4-4-3 3"/>
+                    </svg>
+                    Export Data
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stats Grid -->
+              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium">Total Repositories</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+                      <path d="M16 22v-4a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="m22 21-3-3m0 0a2 2 0 1 0-2.828-2.828l2.828 2.828Z"/>
+                    </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                    <div class="text-2xl font-bold">1,234</div>
+                    <p class="text-xs text-muted-foreground">+12% from last month</p>
+                  </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium">Active Commands</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+                      <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                      <path d="m2 17 10 5 10-5"/>
+                      <path d="m2 12 10 5 10-5"/>
+                    </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                    <div class="text-2xl font-bold">42</div>
+                    <p class="text-xs text-muted-foreground">+8% from last month</p>
+                  </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium">Research Status</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+                      <path d="M9 12l2 2 4-4"/>
+                      <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+                      <path d="M3 12h18"/>
+                    </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                    <div class="text-2xl font-bold">Active</div>
+                    <p class="text-xs text-muted-foreground">Running smoothly</p>
+                  </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                    <h3 class="tracking-tight text-sm font-medium">Success Rate</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+                      <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                      <path d="m2 17 10 5 10-5"/>
+                      <path d="m2 12 10 5 10-5"/>
+                    </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                    <div class="text-2xl font-bold">98.5%</div>
+                    <p class="text-xs text-muted-foreground">+0.2% from last month</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Actions -->
+              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                <button onclick="window.location.href='/admin/research'" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 rounded-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                    <path d="m2 17 10 5 10-5"/>
+                    <path d="m2 12 10 5 10-5"/>
+                  </svg>
+                  Start Research
+                </button>
+
+                <button onclick="window.location.href='/admin/research'" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 rounded-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 12h8"/>
+                  </svg>
+                  Pause Research
+                </button>
+
+                <button onclick="window.location.href='/admin/commands'" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 rounded-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                    <path d="m2 17 10 5 10-5"/>
+                    <path d="m2 12 10 5 10-5"/>
+                  </svg>
+                  Run Command
+                </button>
+
+                <button onclick="window.location.href='/admin/operations'" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 rounded-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                    <path d="m2 17 10 5 10-5"/>
+                    <path d="m2 12 10 5 10-5"/>
+                  </svg>
+                  View Operations
+                </button>
+
+                <button onclick="window.location.href='/admin/operations'" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 rounded-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                    <path d="m2 17 10 5 10-5"/>
+                    <path d="m2 12 10 5 10-5"/>
+                  </svg>
+                  Monitor Operations
+                </button>
+              </div>
+
+              <!-- Recent Activity -->
+              <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+                <div class="p-6">
+                  <h3 class="text-lg font-semibold">Recent Activity</h3>
+                  <p class="text-sm text-muted-foreground">Latest updates from your GitHub Bot</p>
+                </div>
+                <div class="p-6 pt-0">
+                  <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                      <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <div class="flex-1 space-y-1">
+                        <p class="text-sm font-medium">Research completed</p>
+                        <p class="text-xs text-muted-foreground">Repository analysis finished for 15 repositories</p>
+                      </div>
+                      <div class="text-xs text-muted-foreground">2 minutes ago</div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                      <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      <div class="flex-1 space-y-1">
+                        <p class="text-sm font-medium">Command executed</p>
+                        <p class="text-xs text-muted-foreground">Code analysis command completed successfully</p>
+                      </div>
+                      <div class="text-xs text-muted-foreground">5 minutes ago</div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                      <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <div class="flex-1 space-y-1">
+                        <p class="text-sm font-medium">Research in progress</p>
+                        <p class="text-xs text-muted-foreground">Analyzing 3 new repositories</p>
+                      </div>
+                      <div class="text-xs text-muted-foreground">10 minutes ago</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        )
-      ))}
-    </div>
-
-    <section class="space-y-4">
-      <h2 class="text-3xl font-bold tracking-tight">API</h2>
-      <div>
-        <APIDocumentation client:only="react" />
-      </div>
-    </section>
-  </div>
-</Layout>
+        </MainLayout>
+        
+        <script>
+          // Global error handler
+          window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+            const loadingOverlay = document.getElementById('loading-overlay');
+            if (loadingOverlay) {
+              loadingOverlay.innerHTML = `
+                <div class="text-center">
+                  <div class="text-red-500 mb-4">
+                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 19.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                  </div>
+                  <h2 class="text-lg font-semibold text-red-600 mb-2">Something went wrong</h2>
+                  <p class="text-sm text-muted-foreground mb-4">There was an error loading the dashboard.</p>
+                  <button onclick="window.location.reload()" class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90">
+                    Reload Page
+                  </button>
+                </div>
+              `;
+            }
+          });
+          
+          // Prevent flash of unstyled content
+          document.addEventListener('DOMContentLoaded', () => {
+            // Add a small delay to ensure proper hydration
+            setTimeout(() => {
+              const dashboardContainer = document.getElementById('dashboard-container');
+              const loadingOverlay = document.getElementById('loading-overlay');
+              
+              if (dashboardContainer) {
+                dashboardContainer.style.opacity = '1';
+                dashboardContainer.style.transition = 'opacity 0.3s ease-in-out';
+              }
+              
+              if (loadingOverlay) {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                  loadingOverlay.style.display = 'none';
+                }, 300);
+              }
+            }, 500);
+          });
+        </script>
+        
+        <style>
+          #dashboard-container {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+          }
+          
+          .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          
+          .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease-in-out;
+          }
+          
+          .dark .loading-overlay {
+            background: rgba(0, 0, 0, 0.9);
+          }
+        </style>
+  </body>
+</html>

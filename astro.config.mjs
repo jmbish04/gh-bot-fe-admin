@@ -26,5 +26,12 @@ export default defineConfig({
         "react-dom/server": "react-dom/server.edge",
       },
     },
+    logLevel: 'info',
+    esbuild: {
+      logLevel: 'info',
+      logOverride: {
+        'this-is-undefined-in-esm': 'silent'
+      }
+    }
   },
 });

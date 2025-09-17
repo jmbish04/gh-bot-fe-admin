@@ -1,0 +1,191 @@
+
+> gh-bot-fe-admin@ build /Volumes/Projects/workers/gh-bot-fe-admin
+> astro build
+
+06:00:36 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV for production with the "SESSION" KV binding.
+06:00:36 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+06:00:36 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+06:00:36 [content] Syncing content
+06:00:36 [content] Synced content
+06:00:36 [types] Generated 37ms
+06:00:36 [build] output: "server"
+06:00:36 [build] mode: "server"
+06:00:36 [build] directory: /Volumes/Projects/workers/gh-bot-fe-admin/dist/
+06:00:36 [build] adapter: @astrojs/cloudflare
+06:00:36 [build] Collecting build info...
+06:00:36 [build] ✓ Completed in 96ms.
+06:00:36 [build] Building server entrypoints...
+06:00:36 [vite] transforming...
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (4:2): "UserPreferences" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (5:2): "NotificationState" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (6:2): "RepositoryFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (7:2): "CommandFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (8:2): "BestPracticeFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/stores/app-store.ts (9:2): "DashboardStats" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (5:2): "HealthResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (6:2): "ResearchResultsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (7:2): "ResearchResultsParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (8:2): "ColbyCommandsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (9:2): "ColbyCommandsParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (10:2): "BestPracticesResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (11:2): "BestPracticesParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (12:2): "OperationsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (13:2): "StatsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (14:2): "ResearchStatusResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (15:2): "ErrorResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (16:2): "Repository" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (17:2): "ColbyCommand" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (18:2): "BestPractice" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/lib/services/github-bot-api.ts (19:2): "Operation" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (4:2): "ResearchResultsParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (5:2): "ColbyCommandsParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (6:2): "BestPracticesParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (7:2): "Repository" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (8:2): "ColbyCommand" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (9:2): "BestPractice" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (10:2): "Operation" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (11:2): "StatsResponse" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (12:2): "ResearchStatusResponse" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:9): "WebSocketMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:27): "StatsUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:47): "OperationUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:71): "CommandUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:93): "ResearchUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:39 [WARN] [vite] src/hooks/useWebSocket.ts (4:116): "NotificationMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:40 [vite] ✓ 2270 modules transformed.
+06:00:40 [vite] rendering chunks...
+06:00:40 [vite] dist/_worker.js/_astro/admin.v92aEBxl.css                        38.00 kB
+06:00:40 [vite] dist/_worker.js/_astro/admin.Coqez9JZ.css                        39.32 kB
+06:00:40 [vite] dist/_worker.js/chunks/astro_DI8LDwOA.mjs                         0.10 kB
+06:00:40 [vite] dist/_worker.js/_noop-actions.mjs                                 0.10 kB
+06:00:40 [vite] dist/_worker.js/_@astrojs-ssr-adapter.mjs                         0.13 kB
+06:00:40 [vite] dist/_worker.js/renderers.mjs                                     0.13 kB
+06:00:40 [vite] dist/_worker.js/chunks/noop-middleware_YsZWBYss.mjs               0.33 kB
+06:00:40 [vite] dist/_worker.js/_astro-internal_middleware.mjs                    0.46 kB
+06:00:40 [vite] dist/_worker.js/pages/_image.astro.mjs                            0.65 kB
+06:00:40 [vite] dist/_worker.js/pages/api/customers/_id_/workflow.astro.mjs       0.82 kB
+06:00:40 [vite] dist/_worker.js/pages/api/customers/_id_.astro.mjs                1.02 kB
+06:00:40 [vite] dist/_worker.js/pages/api/subscriptions/_id_.astro.mjs            1.22 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/operations.astro.mjs                  1.63 kB
+06:00:40 [vite] dist/_worker.js/pages/api/customers.astro.mjs                     1.68 kB
+06:00:40 [vite] dist/_worker.js/chunks/api_DuEmpPTK.mjs                           1.70 kB
+06:00:40 [vite] dist/_worker.js/pages/api/subscriptions.astro.mjs                 1.79 kB
+06:00:40 [vite] dist/_worker.js/pages/index.astro.mjs                             1.85 kB
+06:00:40 [vite] dist/_worker.js/chunks/table_BD2VwxxD.mjs                         2.76 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/research.astro.mjs                    2.85 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/commands.astro.mjs                    2.85 kB
+06:00:40 [vite] dist/_worker.js/index.js                                          2.86 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/practices.astro.mjs                   2.89 kB
+06:00:40 [vite] dist/_worker.js/chunks/cloudflare-kv-binding_DMly_2Gl.mjs         3.01 kB
+06:00:40 [vite] dist/_worker.js/chunks/customer_B8XM7tLi.mjs                      3.51 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/subscriptions.astro.mjs               3.67 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/customers.astro.mjs                   3.68 kB
+06:00:40 [vite] dist/_worker.js/chunks/subscription_DbvpQnbV.mjs                  3.70 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/customers/_id_.astro.mjs              3.91 kB
+06:00:40 [vite] dist/_worker.js/chunks/Layout_BjGW35k3.mjs                        4.90 kB
+06:00:40 [vite] dist/_worker.js/pages/admin/subscriptions/_id_.astro.mjs          5.14 kB
+06:00:40 [vite] dist/_worker.js/pages/api/customer_subscriptions.astro.mjs        5.93 kB
+06:00:40 [vite] dist/_worker.js/chunks/server_ZRfAC1QD.mjs                       34.96 kB
+06:00:40 [vite] dist/_worker.js/chunks/astro-designed-error-pages_DVCkljMl.mjs   49.19 kB
+06:00:40 [vite] dist/_worker.js/chunks/card_DZSaRQ0l.mjs                         93.85 kB
+06:00:40 [vite] dist/_worker.js/chunks/index_D8Pbfd6m.mjs                       103.86 kB
+06:00:40 [vite] dist/_worker.js/chunks/data-table_DLtnDyVA.mjs                  112.54 kB
+06:00:40 [vite] dist/_worker.js/chunks/astro/server_CxoLLzQF.mjs                241.68 kB
+06:00:40 [vite] dist/_worker.js/pages/admin.astro.mjs                           263.74 kB
+06:00:40 [vite] dist/_worker.js/chunks/_@astro-renderers_ByksGAhC.mjs           471.68 kB
+06:00:40 [vite] ✓ built in 4.22s
+06:00:40 [build] ✓ Completed in 4.25s.
+
+ building client (vite) 
+06:00:40 [vite] transforming...
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (4:2): "UserPreferences" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (5:2): "NotificationState" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (6:2): "RepositoryFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (7:2): "CommandFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (8:2): "BestPracticeFilters" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/stores/app-store.ts (9:2): "DashboardStats" is not exported by "src/types/api.ts", imported by "src/lib/stores/app-store.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (6:2): "HealthResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (7:2): "ResearchResultsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (8:2): "ResearchResultsParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (9:2): "ColbyCommandsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (10:2): "ColbyCommandsParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (11:2): "BestPracticesResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (12:2): "BestPracticesParams" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (13:2): "OperationsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (14:2): "StatsResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (15:2): "ResearchStatusResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (16:2): "ErrorResponse" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (17:2): "Repository" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (18:2): "ColbyCommand" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (19:2): "BestPractice" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/lib/services/github-bot-api.ts (19:2): "Operation" is not exported by "src/types/api.ts", imported by "src/lib/services/github-bot-api.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (4:2): "ResearchResultsParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (5:2): "ColbyCommandsParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (6:2): "BestPracticesParams" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (7:2): "Repository" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (8:2): "ColbyCommand" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (9:2): "BestPractice" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (10:2): "Operation" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (11:2): "StatsResponse" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useGitHubBotAPI.ts (12:2): "ResearchStatusResponse" is not exported by "src/types/api.ts", imported by "src/hooks/useGitHubBotAPI.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:9): "WebSocketMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:27): "StatsUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:47): "OperationUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:71): "CommandUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:93): "ResearchUpdateMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/hooks/useWebSocket.ts (4:116): "NotificationMessage" is not exported by "src/types/api.ts", imported by "src/hooks/useWebSocket.ts".
+06:00:42 [WARN] [vite] src/components/commands/CommandManagement.tsx (33:9): "ColbyCommand" is not exported by "src/types/api.ts", imported by "src/components/commands/CommandManagement.tsx".
+06:00:42 [WARN] [vite] src/components/commands/CommandManagement.tsx (33:23): "CommandFilters" is not exported by "src/types/api.ts", imported by "src/components/commands/CommandManagement.tsx".
+06:00:42 [WARN] [vite] src/components/practices/BestPracticesManagement.tsx (40:9): "BestPractice" is not exported by "src/types/api.ts", imported by "src/components/practices/BestPracticesManagement.tsx".
+06:00:42 [WARN] [vite] src/components/practices/BestPracticesManagement.tsx (40:23): "BestPracticeFilters" is not exported by "src/types/api.ts", imported by "src/components/practices/BestPracticesManagement.tsx".
+06:00:42 [WARN] [vite] src/components/research/ResearchModule.tsx (24:9): "Repository" is not exported by "src/types/api.ts", imported by "src/components/research/ResearchModule.tsx".
+06:00:42 [WARN] [vite] src/components/research/ResearchModule.tsx (24:21): "RepositoryFilters" is not exported by "src/types/api.ts", imported by "src/components/research/ResearchModule.tsx".
+06:00:42 [vite] ✓ 2247 modules transformed.
+06:00:42 [vite] rendering chunks...
+06:00:43 [vite] computing gzip size...
+06:00:43 [vite] dist/_astro/admin.Coqez9JZ.css                    39.32 kB │ gzip:  7.31 kB
+06:00:43 [vite] dist/_astro/play.U5GVeKIB.js                       0.32 kB │ gzip:  0.26 kB
+06:00:43 [vite] dist/_astro/x.DgAMtkyW.js                          0.34 kB │ gzip:  0.26 kB
+06:00:43 [vite] dist/_astro/code.Df0PWS5E.js                       0.35 kB │ gzip:  0.26 kB
+06:00:43 [vite] dist/_astro/clock.BvD9JgDR.js                      0.35 kB │ gzip:  0.27 kB
+06:00:43 [vite] dist/_astro/command.nbcOhEFO.js                    0.37 kB │ gzip:  0.28 kB
+06:00:43 [vite] dist/_astro/circle-check-big.CIrF8omD.js           0.37 kB │ gzip:  0.29 kB
+06:00:43 [vite] dist/_astro/pause.BY5G_ynm.js                      0.40 kB │ gzip:  0.28 kB
+06:00:43 [vite] dist/_astro/activity.C4dh7_9p.js                   0.42 kB │ gzip:  0.31 kB
+06:00:43 [vite] dist/_astro/database.CVIywvd9.js                   0.43 kB │ gzip:  0.31 kB
+06:00:43 [vite] dist/_astro/external-link.MYEtSxrw.js              0.44 kB │ gzip:  0.31 kB
+06:00:43 [vite] dist/_astro/zap.CbJxB3TO.js                        0.45 kB │ gzip:  0.32 kB
+06:00:43 [vite] dist/_astro/git-branch.DofBph8z.js                 0.46 kB │ gzip:  0.32 kB
+06:00:43 [vite] dist/_astro/book-open.w_Z35PTq.js                  0.46 kB │ gzip:  0.32 kB
+06:00:43 [vite] dist/_astro/refresh-cw.DqIer7AM.js                 0.51 kB │ gzip:  0.33 kB
+06:00:43 [vite] dist/_astro/index.DY7IhN6y.js                      0.61 kB │ gzip:  0.43 kB
+06:00:43 [vite] dist/_astro/label.oQITnHUX.js                      1.10 kB │ gzip:  0.59 kB
+06:00:43 [vite] dist/_astro/funnel.Chjl-YCf.js                     1.26 kB │ gzip:  0.49 kB
+06:00:43 [vite] dist/_astro/run-customer-workflow.Bq6nToFk.js      1.65 kB │ gzip:  0.90 kB
+06:00:43 [vite] dist/_astro/card.aMn0uEyd.js                       1.69 kB │ gzip:  0.63 kB
+06:00:43 [vite] dist/_astro/create-customer.DTRyRp2E.js            1.98 kB │ gzip:  0.89 kB
+06:00:43 [vite] dist/_astro/create-subscription.DDP2De_V.js        3.55 kB │ gzip:  1.37 kB
+06:00:43 [vite] dist/_astro/index.DaKJxkVF.js                      3.89 kB │ gzip:  1.52 kB
+06:00:43 [vite] dist/_astro/SimpleDashboard.pFUOGv4b.js            5.15 kB │ gzip:  1.12 kB
+06:00:43 [vite] dist/_astro/index.BCtMShv3.js                      8.29 kB │ gzip:  3.23 kB
+06:00:43 [vite] dist/_astro/formatDistanceToNow.FWTdgOsE.js       10.52 kB │ gzip:  3.67 kB
+06:00:43 [vite] dist/_astro/ResearchModule.Bqhti-RG.js            12.05 kB │ gzip:  3.40 kB
+06:00:43 [vite] dist/_astro/Combination.DCzPCJ-r.js               12.70 kB │ gzip:  4.85 kB
+06:00:43 [vite] dist/_astro/CommandManagement.oqfR9Tkz.js         13.49 kB │ gzip:  3.48 kB
+06:00:43 [vite] dist/_astro/BestPracticesManagement.CH8_tasp.js   16.34 kB │ gzip:  4.24 kB
+06:00:43 [vite] dist/_astro/OperationsMonitoring.MHyAKYIn.js      16.61 kB │ gzip:  4.04 kB
+06:00:43 [vite] dist/_astro/api.D0_F6dnW.js                       19.96 kB │ gzip:  6.89 kB
+06:00:43 [vite] dist/_astro/MainLayout.DlfbzvP_.js                21.28 kB │ gzip:  6.77 kB
+06:00:43 [vite] dist/_astro/createLucideIcon.DG206Me8.js          31.00 kB │ gzip: 10.30 kB
+06:00:43 [vite] dist/_astro/useGitHubBotAPI.DIh99x6Z.js           74.03 kB │ gzip: 25.98 kB
+06:00:43 [vite] dist/_astro/tabs.fIp7s1vv.js                      74.12 kB │ gzip: 25.40 kB
+06:00:43 [vite] dist/_astro/types.C73j3Erh.js                     85.69 kB │ gzip: 23.74 kB
+06:00:43 [vite] dist/_astro/client.CVI9NSBG.js                   174.44 kB │ gzip: 55.46 kB
+06:00:43 [vite] ✓ built in 2.20s
+
+ prerendering static routes 
+06:00:43 ✓ Completed in 17ms.
+
+06:00:43 [build] Rearranging server assets...
+06:00:43 [build] Server built in 6.59s
+06:00:43 [build] Complete!
