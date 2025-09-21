@@ -47,9 +47,9 @@ class GitHubBotAPI {
   private baseUrl: string
   private authPassword?: string
 
-  constructor(baseUrl: string = 'https://gh-bot.hacolby.workers.dev', authPassword?: string) {
-    this.baseUrl = baseUrl
-    this.authPassword = authPassword
+  constructor(baseUrl: string = import.meta.env.VITE_API_BASE_URL || 'https://gh-bot.hacolby.workers.dev', authPassword?: string) {
+    this.baseUrl = baseUrl;
+    this.authPassword = authPassword || import.meta.env.VITE_API_AUTH_PASSWORD;
   }
 
   private async request<T>(endpoint: string, options?: RequestInit): Promise<T> {
