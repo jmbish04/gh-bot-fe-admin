@@ -6,12 +6,14 @@ dist/
 
 # dependencies
 node_modules/
+packages/*/node_modules/
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+vite*.log
 
 # environment variables
 .env
@@ -31,3 +33,7 @@ pnpm-debug.log*
 !.dev.vars.example
 .env*
 !.env.example
+
+# Package-specific builds
+packages/*/dist/
+packages/*/.vite/

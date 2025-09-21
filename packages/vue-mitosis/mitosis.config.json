@@ -1,0 +1,14 @@
+{
+  "targets": ["vue3"],
+  "dest": "./src/generated",
+  "files": "./src/mitosis/**",
+  "options": {
+    "vue3": {
+      "namePrefix": "Shadcn",
+      "cssModules": false,
+      "plugins": [],
+      "typescript": true,
+      "api": "composition"
+    }
+  }
+}
